@@ -1,31 +1,91 @@
-import React from 'react';
-import './App.css';
-import twitterLogo from './assets/twitter-logo.svg';
+import React, { useEffect, useState } from 'react'
+import './App.css'
+import twitterLogo from './assets/twitter-logo.svg'
 
 // Constants
-const TWITTER_HANDLE = '_buildspace';
-const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
+const TWITTER_HANDLE = 'andrewmhenry22'
+const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`
 
 const App = () => {
+  const [walletAddress, setWalletAddress] = useState(null)
+  // Actions
+
+  /*
+   * Declare your function
+   */
+  const checkIfWalletIsConnected = async () => {
+    try {
+      const { solana } = window
+
+      if (solana) {
+        if (solana.isPhantom) {
+          console.log('Phantom wallet found!')
+
+          // The solana object gives us a function that will allow us to connect directly with the user's wallet!
+          // BUT first the User must of course give permission! This is done with our 'Connect Wallet' button
+
+          const response = await solana.connect({ onlyIfTrusted: true })
+          console.log('Connected with Public Key:', response.publicKey.toString())
+
+          // Set the user's publicKey in state
+          setWalletAddress(response.publicKey.toString())
+        }
+      } else {
+        alert('Solana object not found! Get a Phantom Wallet 👻')
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  // Connect Wallet
+  const connectWallet = async () => {
+    const { solana } = window
+
+    if (solana) {
+      const response = await solana.connect()
+      console.log('Connected with Public Key:', response.publicKey.toString())
+      setWalletAddress(response.publicKey.toString())
+    }
+  }
+
+  // Render 'Connect Wallet' button if User not connected
+  const renderNotConnectedContainer = () => (
+    <button className='cta-button connect-wallet-button' onClick={connectWallet}>
+      Connect to Wallet
+    </button>
+  )
+
+  // When our component first mounts, let's check to see if we have a connected Phantom Wallet
+
+  useEffect(() => {
+    const onLoad = async () => {
+      await checkIfWalletIsConnected()
+    }
+    window.addEventListener('load', onLoad) // the Phantom Wallet team suggests to wait for the window to fully finish loading before checking for the solana object.
+    return () => window.removeEventListener('load', onLoad)
+  }, [])
+
   return (
-    <div className="App">
-      <div className="container">
-        <div className="header-container">
-          <p className="header">🍭 Candy Drop</p>
-          <p className="sub-text">NFT drop machine with fair mint</p>
+    <div className='App'>
+      <div className='container'>
+        <div className='header-container'>
+          <p className='header'>🍭 Candy Drop</p>
+          <p className='sub-text'>NFT drop machine with fair mint</p>
+          {!walletAddress && renderNotConnectedContainer()}
         </div>
-        <div className="footer-container">
-          <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
+        <div className='footer-container'>
+          <img alt='Twitter Logo' className='twitter-logo' src={twitterLogo} />
           <a
-            className="footer-text"
+            className='footer-text'
             href={TWITTER_LINK}
-            target="_blank"
-            rel="noreferrer"
-          >{`built on @${TWITTER_HANDLE}`}</a>
+            target='_blank'
+            rel='noreferrer'
+          >{`built by @${TWITTER_HANDLE}`}</a>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
