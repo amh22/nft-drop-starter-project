@@ -61,6 +61,7 @@ const App = () => {
       disabled={!phantomWallet}
       style={{
         cursor: !phantomWallet ? 'not-allowed' : 'pointer',
+        marginTop: '20px',
         marginBottom: '20px',
       }}
     >
@@ -104,8 +105,22 @@ const App = () => {
       <div className='container'>
         <div className='header-container'>
           <p className='header'>🍭 Sauce Candy</p>
-          <p className='sub-text'>An NFT drop machine with fair mint</p>
-          <p className='sub-text'>Season #1: Hot Ones! 🔥</p>
+          <p
+            style={{
+              fontSize: '35px',
+            }}
+          >
+            A little sauce makes everything better!
+          </p>
+          <p
+            style={{
+              fontSize: '35px',
+              fontWeight: 700,
+            }}
+          >
+            Season #1: Hot Ones! 🔥
+          </p>
+          <p className='sub-text'>A Solana NFT drop with fair mint</p>
 
           {!walletAddress && renderNotConnectedContainer()}
           {!phantomWallet && renderWalletNotFoundContainer()}
