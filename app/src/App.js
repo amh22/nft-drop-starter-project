@@ -104,7 +104,7 @@ const App = () => {
     <div className='App'>
       <div className='container'>
         <div className='header-container'>
-          <p className='header'>🍭 Sauce Candy</p>
+          <p className='header'>Sauce Candy 🍭</p>
           <p
             style={{
               fontSize: '35px',
@@ -118,7 +118,7 @@ const App = () => {
               fontWeight: 700,
             }}
           >
-            Season #1: Hot Ones! 🔥
+            Hot Ones! 🔥 Season #1
           </p>
           <p className='sub-text'>A Solana NFT drop with fair mint</p>
 
