@@ -118,7 +118,7 @@ const App = () => {
               fontWeight: 700,
             }}
           >
-            Hot Ones! 🔥 Season #1
+            Hot Ones! 🔥 Season #2
           </p>
           <p className='sub-text'>A Solana NFT drop with fair mint</p>
 
