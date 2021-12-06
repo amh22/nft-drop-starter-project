@@ -285,17 +285,18 @@ const CandyMachine = ({ walletAddress }) => {
       goLiveDateTimeString,
     })
 
-    console.log({
-      itemsAvailable,
-      itemsRedeemed,
-      itemsRemaining,
-      goLiveData,
-      goLiveDateTimeString,
-    })
+    // console.log({
+    //   itemsAvailable,
+    //   itemsRedeemed,
+    //   itemsRemaining,
+    //   goLiveData,
+    //   goLiveDateTimeString,
+    // })
 
     // Set loading flag.
     setIsLoadingMints(true)
 
+    // "Get all the accounts that have a minted NFT on this program and return the Token URI's which point to our metadata for that NFT".
     const data = await fetchHashTable(process.env.REACT_APP_CANDY_MACHINE_ID, true)
 
     if (data.length !== 0) {
@@ -303,12 +304,14 @@ const CandyMachine = ({ walletAddress }) => {
         // Get URI
         const response = await fetch(mint.data.uri)
         const parse = await response.json()
-        console.log('🚀 ~ file: index.js ~ line 293 ~ getCandyMachineState ~ parse', parse)
-        console.log('Past Minted NFT', mint)
+        // console.log('🚀 ~ file: index.js ~ line 293 ~ getCandyMachineState ~ parse', parse)
+        // console.log('Past Minted NFT', mint)
+
+        // const mintsFind = mints.find((item) => item.url === parse.image)
+        // console.log('🚀 ~ file: index.js ~ line 317 ~ getCandyMachineState ~ mintsFind', mintsFind)
 
         // Get image URL
-        if (!mints.find((mint) => mint === parse.image)) {
-          // setMints((prevState) => [{...prevState, parse.image, parse.name}])
+        if (!mints.find((item) => item.url === parse.image)) {
           const url = parse.image
           const name = parse.name
           const shu = parse.attributes
@@ -367,7 +370,7 @@ const CandyMachine = ({ walletAddress }) => {
                 cursor: isMinting ? 'not-allowed' : 'pointer',
               }}
             >
-              Mint NFT
+              {isMinting ? 'Minting...' : 'Mint NFT'}
             </button>
           )}
         </div>
