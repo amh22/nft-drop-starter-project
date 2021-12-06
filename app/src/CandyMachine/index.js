@@ -359,7 +359,14 @@ const CandyMachine = ({ walletAddress }) => {
           {machineStats.itemsRedeemed === machineStats.itemsAvailable ? (
             <p className='sub-text'>Sold Out 🙊</p>
           ) : (
-            <button className='cta-button mint-button' onClick={mintToken} disabled={isMinting}>
+            <button
+              className='cta-button mint-button'
+              onClick={mintToken}
+              disabled={isMinting}
+              style={{
+                cursor: isMinting ? 'not-allowed' : 'pointer',
+              }}
+            >
               Mint NFT
             </button>
           )}
