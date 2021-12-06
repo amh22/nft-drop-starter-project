@@ -1,0 +1,29 @@
+{
+  "name": "Dingo Widow Maker",
+  "symbol": "",
+  "image": "3.png",
+  "collection": {
+    "name": "Hot Ones! Season #2",
+    "family": "More Sauce"
+  },
+  "attributes": [
+    {
+      "trait_type": "Scoville Heat Units (SHU)",
+      "value": "682,000"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "3.png",
+        "type": "image/png"
+      }
+    ],
+    "creators": [
+      {
+        "address": "Cpdi9JyKgFueJr7FpQiKs8xfai4QNKuSbU8q2V4biK8d",
+        "share": 100
+      }
+    ]
+  }
+}

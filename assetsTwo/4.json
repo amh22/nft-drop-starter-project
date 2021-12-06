@@ -1,0 +1,29 @@
+{
+  "name": "Huy Fong Sriracha Chilli Sauce",
+  "symbol": "",
+  "image": "4.png",
+  "collection": {
+    "name": "Hot Ones! Season #2",
+    "family": "More Sauce"
+  },
+  "attributes": [
+    {
+      "trait_type": "Scoville Heat Units (SHU)",
+      "value": "2,200"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "4.png",
+        "type": "image/png"
+      }
+    ],
+    "creators": [
+      {
+        "address": "Cpdi9JyKgFueJr7FpQiKs8xfai4QNKuSbU8q2V4biK8d",
+        "share": 100
+      }
+    ]
+  }
+}

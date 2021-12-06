@@ -1,0 +1,29 @@
+{
+  "name": "Dawson's Original Hot Sauce",
+  "symbol": "",
+  "image": "2.png",
+  "collection": {
+    "name": "Hot Ones! Season #2",
+    "family": "More Sauce"
+  },
+  "attributes": [
+    {
+      "trait_type": "Scoville Heat Units (SHU)",
+      "value": "82,000"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "2.png",
+        "type": "image/png"
+      }
+    ],
+    "creators": [
+      {
+        "address": "Cpdi9JyKgFueJr7FpQiKs8xfai4QNKuSbU8q2V4biK8d",
+        "share": 100
+      }
+    ]
+  }
+}
